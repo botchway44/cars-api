@@ -13,4 +13,17 @@ GET http://localhost:4000/auth/users
 
 
 ### Get a user
-GET http://localhost:4000/auth/user/8491c888-f6d4-43db-8ce8-cc87aff9adff
+GET http://localhost:4000/auth/user/ab5aba74-6627-4257-85a0-ac9150335fff
+
+
+### Remove a user
+DELETE  http://localhost:4000/auth/user/8491c888-f6d4-43db-8ce8-cc87aff9adff
+
+### Update a user
+PATCH http://localhost:4000/auth/user/ab5aba74-6627-4257-85a0-ac9150335fff
+content-type: application/json
+
+{   
+    "email": "aaa@gmail.com",
+    "password": "thisisanewpassword"
+}

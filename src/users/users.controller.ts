@@ -1,9 +1,13 @@
-import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, ClassSerializerInterceptor, Controller, Delete, Get, Param, Patch, Post, UseInterceptors } from '@nestjs/common';
+import { Serialize, SerializeInterceptor } from 'src/interceptors/serialize.interceptor';
 import { CreateUserDTO } from './dto/create-user.dto';
+import { UpdateUserDTO } from './dto/update-user.dto';
+import { UserDTO } from './dto/user.dto';
 import { User } from './user.entity';
 import { UsersService } from './users.service';
 
 @Controller('auth')
+  @Serialize(UserDTO)
 export class UsersController {
 
   constructor(private userService: UsersService) {
@@ -22,9 +26,15 @@ export class UsersController {
   }
 
   @Patch('user/:id')
-  updateUser(@Param('id') id: string, @Body() user: Partial<User>): Promise<User> {
+  updateUser(@Param('id') id: string, @Body() user: UpdateUserDTO): Promise<User> {
     return this.userService.update(id, user);
   }
+
+  @Delete('user/:id')
+  deleteUser(@Param('id') id: string): Promise<User> {
+    return this.userService.remove(id);
+  }
+
 
   @Get('users')
   allUsers(): Promise<User[]> {

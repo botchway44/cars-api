@@ -29,7 +29,7 @@ export class UsersService {
 
 
   find(email: string) {
-    this.userRepository.find({ where: { email: email } });
+    return this.userRepository.find({ where: { email: email } });
   }
 
   async update(id: string, attributes: Partial<User>) {
