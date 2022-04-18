@@ -3,7 +3,7 @@ POST http://localhost:4000/auth/signup
 content-type: application/json
 
 {
-    "email": "plural@gmail.com",
+    "email": "hamburg@gmail.com",
     "password": "thisispassword"
 }
 
@@ -15,6 +15,12 @@ content-type: application/json
     "email": "plural@gmail.com",
     "password": "thisispassword"
 }
+
+### Get currently signed in user
+GET http://localhost:4000/auth/me
+
+### Signout user
+GET http://localhost:4000/auth/logout
 
 
 ### Get all users

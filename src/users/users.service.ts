@@ -22,6 +22,7 @@ export class UsersService {
   }
 
   findOne(id: string) {
+    if (!id) return null;
     return this.userRepository.findOne({ where: { id: id } });
   }
 
