@@ -7,4 +7,7 @@ export class UserDTO {
 
   @Expose()
   email: string;
+
+  @Expose()
+  password: string;
 }

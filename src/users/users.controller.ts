@@ -5,20 +5,31 @@ import { UpdateUserDTO } from './dto/update-user.dto';
 import { UserDTO } from './dto/user.dto';
 import { User } from './user.entity';
 import { UsersService } from './users.service';
+import { AuthService } from './auth.service';
 
 @Controller('auth')
   @Serialize(UserDTO)
 export class UsersController {
 
-  constructor(private userService: UsersService) {
+  constructor(
+    private userService: UsersService,
+    private authService: AuthService,
+  ) {
 
   }
 
   @Post('signup')
   createUser(@Body() user: CreateUserDTO): Promise<User> {
-    console.log(user)
-    return this.userService.create(user);
+    const { email, password } = user;
+    return this.authService.signup(email, password);
   }
+
+  @Post('signin')
+  validateUser(@Body() user: CreateUserDTO): Promise<User> {
+    const { email, password } = user;
+    return this.authService.signin(email, password);
+  }
+
 
   @Get('user/:id')
   getUser(@Param('id') id: string): Promise<User> {

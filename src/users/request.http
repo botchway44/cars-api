@@ -3,7 +3,16 @@ POST http://localhost:4000/auth/signup
 content-type: application/json
 
 {
-    "email": "noel@gmail.com",
+    "email": "plural@gmail.com",
+    "password": "thisispassword"
+}
+
+### Signin a user account
+POST http://localhost:4000/auth/signin
+content-type: application/json
+
+{
+    "email": "plural@gmail.com",
     "password": "thisispassword"
 }
 
