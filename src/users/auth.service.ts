@@ -19,10 +19,10 @@ export class AuthService {
 
     //gen salt
     const salt = randomBytes(8).toString('hex');
-    console.log('Salt', salt);
+    // console.log('Salt', salt);
     //hash passwords
     const hash = (await scrypt(password, salt, 32)) as Buffer;
-    console.log('Hash', hash);
+    // console.log('Hash', hash);
     //create user
     const result = salt + '.' + hash.toString('hex');
 
